@@ -1,0 +1,24 @@
+.column-wrapper {
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 0 50px;
+  @media screen and (max-width: 991px) {
+    padding: 0 30px;
+  }
+}
+@each $infix, $breakpoint in $grid-breakpoints-up {
+  @media screen and (min-width: $breakpoint) {
+    @each $size, $percentage in $layouts {
+      .size-#{$size} {
+        width: $percentage;
+      }
+      .size-#{$infix}-#{$size} {
+        width: $percentage !important;
+      }
+    }
+  }
+}

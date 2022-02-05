@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-50">
+  <div class="flex-x-between mb-30 flex-wrap">
+    <div class="mb-10 mb-md-0 w-100-sm">
+      <input type="text" class="search" placeholder="Search for a country" />
+    </div>
+    <div class="dropdown">
+      <div
+        class="shadow-sm radius-sm flex-x-between selected cursor-pointer"
+        (click)="shodwDropdown = !shodwDropdown"
+      >
+        <span class="pr-4">Search By Region</span>
+        <span class="material-icons text-grey"> arrow_drop_down </span>
+      </div>
+      <ul class="shadow-sm bg-white radius-sm" *ngIf="shodwDropdown">
+        <li class="cursor-pointer mb-10">Europe</li>
+        <li class="cursor-pointer mb-10">Africa</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="size-md-3" *ngFor="let country of countries">
+      <div class="column-wrapper">
+        <div class="country-card">
+          <div class="flag">
+            <img [src]="country?.flags?.svg" [alt]="country?.name?.official" />
+          </div>
+          <div class="details">
+            <p class="mb-10 s18-h24">{{ country?.name?.official }}</p>
+            <p class="mb-5">
+              Population: <span>{{ country?.population }}</span>
+            </p>
+            <p class="mb-5">
+              Region: <span>{{ country?.region }}</span>
+            </p>
+            <p>
+              Capital: <span>{{ country?.capital?.slice(0) }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row shimmer" *ngIf="!loading && countries.length > 0">
+    <div class="size-md-3" *ngFor="let country of numSequence(8)">
+      <div class="column-wrapper">
+        <div class="shimmer">
+          <div class="shine head"></div>
+          <div class="shine line first"></div>
+          <div class="shine line"></div>
+          <div class="shine line"></div>
+          <div class="shine line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
