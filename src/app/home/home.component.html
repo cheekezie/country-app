@@ -3,7 +3,12 @@
 <div class="container pt-50">
   <div class="flex-x-between mb-30 flex-wrap">
     <div class="mb-10 mb-md-0 w-100-sm">
-      <input type="text" class="search" placeholder="Search for a country" />
+      <input
+        type="text"
+        class="search"
+        [formControl]="searchControl"
+        placeholder="Search for a country"
+      />
     </div>
     <div class="dropdown">
       <div
@@ -14,8 +19,13 @@
         <span class="material-icons text-grey"> arrow_drop_down </span>
       </div>
       <ul class="shadow-sm bg-white radius-sm" *ngIf="shodwDropdown">
-        <li class="cursor-pointer mb-10">Europe</li>
-        <li class="cursor-pointer mb-10">Africa</li>
+        <li
+          class="cursor-pointer p-5 hover-grey"
+          *ngFor="let region of regions"
+          (click)="searchByRegion(region)"
+        >
+          {{ region }}
+        </li>
       </ul>
     </div>
   </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import * as _ from 'lodash';
+import { debounceTime } from 'rxjs';
 import { Country } from '../core/models/country';
 import { ApiService } from '../core/services/api/api.service';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +14,21 @@ export class HomeComponent implements OnInit {
   countries: Country[] = [];
   shodwDropdown = false;
   loading = false;
+  searchControl: FormControl = new FormControl('');
+  regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   constructor(private countryS: ApiService) {
     //
   }
 
   ngOnInit(): void {
+    this.listenToKeySearch();
     this.getCountries();
+  }
+
+  listenToKeySearch() {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((data) => console.log(data));
   }
 
   getCountries() {
@@ -31,5 +42,9 @@ export class HomeComponent implements OnInit {
   // Used to loop through the shimmer for a number of times
   numSequence(n: number): Array<number> {
     return Array(n);
+  }
+
+  searchByRegion(region: string) {
+    console.log(region);
   }
 }
