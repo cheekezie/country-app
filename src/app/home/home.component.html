@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <div class="row shimmer" *ngIf="!loading && countries.length > 0">
+  <div class="row shimmer" *ngIf="loading && countries.length === 0">
     <div class="size-md-3" *ngFor="let country of numSequence(8)">
       <div class="column-wrapper">
         <div class="shimmer">
