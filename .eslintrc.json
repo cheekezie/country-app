@@ -14,7 +14,7 @@
       ],
       "rules": {
         "@typescript-eslint/semi": ["warn", "always"],
-        "@typescript-eslint/no-explicit-any": "error",
+        // "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/explicit-module-boundary-types": 0,
         "@typescript-eslint/no-empty-function": "error",
         "no-unused-vars": "off",

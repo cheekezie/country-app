@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, Renderer2 } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import {
   Event as RouterEvent,
   RouteConfigLoadEnd,
@@ -6,6 +12,8 @@ import {
   Router,
   RouterOutlet,
 } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { UtilService } from './core/services/util/util.service';
 import { slider } from './_animations';
 @Component({
   selector: 'app-root',
@@ -13,9 +21,15 @@ import { slider } from './_animations';
   styleUrls: ['./app.component.scss'],
   animations: [slider],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   public isShowingRouteLoadIndicator: boolean;
-  constructor(private router: Router, private renderer: Renderer2) {
+  public themeSub: Subscription;
+  darkTheme = false;
+  constructor(
+    private router: Router,
+    private renderer: Renderer2,
+    private util: UtilService,
+  ) {
     this.isShowingRouteLoadIndicator = false;
     let asyncLoadCount = 0;
     router.events.subscribe((event: RouterEvent): void => {
@@ -28,11 +42,20 @@ export class AppComponent implements AfterViewInit {
       this.isShowingRouteLoadIndicator = !!asyncLoadCount;
     });
   }
+  ngOnInit() {
+    this.themeSub = this.util.theme.subscribe((theme) => {
+      this.darkTheme = theme;
+    });
+  }
 
+  ngOnDestroy(): void {
+    this.themeSub?.unsubscribe();
+  }
   ngAfterViewInit() {
     const loader = this.renderer.selectRootElement('#appLoader');
     this.renderer.setStyle(loader, 'display', 'none');
   }
+
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&

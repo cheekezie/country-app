@@ -1,6 +1,3 @@
-.dark-theme {
-  background: var(--dark-theme);
-}
 .bg-black {
   background: var(--black);
 }
@@ -19,4 +16,15 @@
 }
 .text-black {
   color: var(--black);
+}
+.dark-theme {
+  background: var(--dark-theme);
+  @extend .text-white;
+}
+
+.dark-theme-alt {
+  background: var(--dark-theme-alt) !important;
+  * {
+    color: var(--white) !important;
+  }
 }

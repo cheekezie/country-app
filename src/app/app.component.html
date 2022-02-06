@@ -1,3 +1,7 @@
-<div [@routeAnimations]="prepareRoute(outlet)">
+<div
+  [@routeAnimations]="prepareRoute(outlet)"
+  class="min-h-100"
+  [ngClass]="{ darkTheme: darkTheme }"
+>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>

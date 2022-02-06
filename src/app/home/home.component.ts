@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   countries: Country[] = [];
   shodwDropdown = false;
   loading = false;
+  darkTheme = false;
   searchControl: FormControl = new FormControl('');
   regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   constructor(private countryS: ApiService) {
@@ -46,5 +47,8 @@ export class HomeComponent implements OnInit {
 
   searchByRegion(region: string) {
     console.log(region);
+  }
+  changeTheme(theme: boolean) {
+    this.darkTheme = theme;
   }
 }
