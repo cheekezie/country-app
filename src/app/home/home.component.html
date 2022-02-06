@@ -29,7 +29,11 @@
         class="shadow-sm radius-sm flex-x-between selected cursor-pointer"
         (click)="shodwDropdown = !shodwDropdown"
       >
-        <span class="pr-4">Search By Region</span>
+        <span class="pr-4">{{
+          !selectedRegion || selectedRegion === 'All'
+            ? 'Search By Region'
+            : selectedRegion
+        }}</span>
         <span class="material-icons text-grey"> arrow_drop_down </span>
       </div>
       <ul class="shadow-sm bg-white radius-sm" *ngIf="shodwDropdown">

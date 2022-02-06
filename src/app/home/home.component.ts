@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   countries: Country[] = [];
   shodwDropdown = false;
   loading = false;
+  selectedRegion: string;
   searchControl: FormControl = new FormControl('');
   regions: string[] = [
     'All',
@@ -53,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   searchByRegion(region: string) {
-    console.log(region);
+    this.selectedRegion = region;
     this.shodwDropdown = false;
   }
   openDetail(name: string) {
