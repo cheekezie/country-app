@@ -11,7 +11,7 @@ export class UtilService {
     //
   }
 
-  private themeSubject = new BehaviorSubject<boolean>(true);
+  private themeSubject = new BehaviorSubject<boolean>(false);
   theme = this.themeSubject.asObservable();
 
   setTheme(theme: boolean) {
