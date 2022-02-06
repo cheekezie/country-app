@@ -87,6 +87,10 @@
     width: 100%;
   }
 }
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
 .visited {
   min-width: max-content;
   img {
@@ -165,6 +169,8 @@
   .visited,
   .dropdown .selected,
   .shimmer .shine,
+  button,
+  .bg-white,
   .country-card {
     @extend .dark-theme-alt;
   }
@@ -178,6 +184,9 @@
     &:hover {
       @extend .dark-theme;
     }
+  }
+  button {
+    color: var(--white) !important;
   }
   input.search {
     background-image: url('../../assets/icons/icons-white-search.svg') !important;
