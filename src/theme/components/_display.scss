@@ -87,6 +87,13 @@
     width: 100%;
   }
 }
+.visited {
+  min-width: max-content;
+  img {
+    height: 2rem;
+    width: auto;
+  }
+}
 .shadow-md {
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25);
 }
@@ -96,6 +103,16 @@
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.overflow-auto {
+  overflow-x: auto;
+}
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .hover-grey {
   &:hover {
@@ -145,6 +162,7 @@
   input,
   .navbar,
   .dropdown ul,
+  .visited,
   .dropdown .selected,
   .shimmer .shine,
   .country-card {
@@ -155,6 +173,11 @@
   }
   ::placeholder {
     @extend .text-white;
+  }
+  .hover-grey {
+    &:hover {
+      @extend .dark-theme;
+    }
   }
   input.search {
     background-image: url('../../assets/icons/icons-white-search.svg') !important;

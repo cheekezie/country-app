@@ -1,6 +1,20 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
-<div class="container pt-50" [ngClass]="{ 'dark-theme': darkTheme }">
+<div class="container pt-50">
+  <div class="mb-40">
+    <h6 class="text-weight-700 s17-h23">Visited Countries</h6>
+    <div class="overflow-auto hide-scrollbar flex-x-center py-10">
+      <div
+        class="visited radius-sm shadow-sm flex-x-center mr-5 p-4 bg-white cursor-pointer"
+        *ngFor="let country of countries.slice(0, 15)"
+      >
+        <img [src]="country?.flags?.svg" [alt]="country?.name?.official" />
+        <p class="s12-h17 text-grey pl-3">
+          {{ country?.name?.official }}
+        </p>
+      </div>
+    </div>
+  </div>
   <div class="flex-x-between mb-30 flex-wrap">
     <div class="mb-10 mb-md-0 w-100-sm">
       <input
@@ -30,7 +44,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="size-md-3" *ngFor="let country of countries">
+    <div
+      class="size-md-3 cursor-pointer"
+      *ngFor="let country of countries"
+      (click)="openDetail(country.name.official)"
+    >
       <div class="column-wrapper">
         <div class="country-card">
           <div class="flag">

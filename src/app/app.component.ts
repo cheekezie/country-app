@@ -25,6 +25,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   public isShowingRouteLoadIndicator: boolean;
   public themeSub: Subscription;
   darkTheme = false;
+  title = '';
   constructor(
     private router: Router,
     private renderer: Renderer2,
@@ -62,5 +63,9 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
       outlet.activatedRouteData &&
       outlet.activatedRouteData['animation']
     );
+  }
+
+  toggleTheme() {
+    this.darkTheme = !this.darkTheme;
   }
 }

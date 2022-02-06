@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { debounceTime } from 'rxjs';
 import { Country } from '../core/models/country';
@@ -14,10 +15,16 @@ export class HomeComponent implements OnInit {
   countries: Country[] = [];
   shodwDropdown = false;
   loading = false;
-  darkTheme = false;
   searchControl: FormControl = new FormControl('');
-  regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
-  constructor(private countryS: ApiService) {
+  regions: string[] = [
+    'All',
+    'Africa',
+    'Americas',
+    'Asia',
+    'Europe',
+    'Oceania',
+  ];
+  constructor(private countryS: ApiService, private router: Router) {
     //
   }
 
@@ -47,8 +54,10 @@ export class HomeComponent implements OnInit {
 
   searchByRegion(region: string) {
     console.log(region);
+    this.shodwDropdown = false;
   }
-  changeTheme(theme: boolean) {
-    this.darkTheme = theme;
+  openDetail(name: string) {
+    const slug = name.trim().toLowerCase().replace(/\s+/g, '-'); // remove white space from country name and replace with '-';
+    this.router.navigate(['/', slug]);
   }
 }

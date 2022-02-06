@@ -9,7 +9,7 @@ const routes: Routes = [
     data: { title: 'Country Listing Application | Home', animation: 'home' },
   },
   {
-    path: ':/id',
+    path: ':slug',
     data: {
       data: {
         title: 'Country Listing Application | Deatils',
