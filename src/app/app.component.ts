@@ -15,6 +15,8 @@ import {
 import { Subscription } from 'rxjs';
 import { UtilService } from './core/services/util/util.service';
 import { slider } from './_animations';
+import * as AOS from 'aos';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -44,6 +46,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     });
   }
   ngOnInit() {
+    AOS.init();
     this.themeSub = this.util.theme.subscribe((theme) => {
       this.darkTheme = theme;
     });
@@ -63,9 +66,5 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
       outlet.activatedRouteData &&
       outlet.activatedRouteData['animation']
     );
-  }
-
-  toggleTheme() {
-    this.darkTheme = !this.darkTheme;
   }
 }

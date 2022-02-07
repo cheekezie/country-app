@@ -91,13 +91,10 @@
   max-width: 100%;
   height: auto;
 }
-.visited {
-  min-width: max-content;
-  img {
-    height: 2rem;
-    width: auto;
-  }
+.flex-1 {
+  flex: 1;
 }
+
 .shadow-md {
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25);
 }
@@ -118,6 +115,7 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
 .hover-grey {
   &:hover {
     background: var(--light-grey);
@@ -127,38 +125,6 @@
   margin: 0 -20px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.country-card {
-  width: 100%;
-  border-radius: 6px;
-  @extend .shadow-md;
-  .flag {
-    img {
-      width: 100%;
-      height: 10rem;
-      @include responsive(height, auto, sm);
-      object-fit: cover;
-      border-radius: 6px 6px 0 0;
-    }
-  }
-  .details {
-    padding: 1rem 1.5rem 2.5rem 1.5rem;
-  }
-  p {
-    &:first-of-type {
-      @extend .s17-h23;
-      @extend .text-black;
-      @extend .text-weight-bolder;
-    }
-    @extend .s15-h17;
-    @extend .text-dark;
-    @extend .text-weight-700;
-
-    span {
-      @extend .text-weight-400;
-    }
-  }
 }
 
 .darkTheme {
@@ -189,10 +155,24 @@
     color: var(--white) !important;
   }
   input.search {
+    color: var(--white) !important;
     background-image: url('../../assets/icons/icons-white-search.svg') !important;
     background-repeat: no-repeat !important;
     background-position-x: rem(23) !important;
     background-position-y: 50% !important;
     background-size: 25px !important;
+  }
+
+  .text-grey,
+  .text-black,
+  .text-dark {
+    @extend .text-white;
+  }
+  .details {
+    p {
+      span {
+        color: var(--off-white) !important;
+      }
+    }
   }
 }

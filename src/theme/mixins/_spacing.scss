@@ -1,39 +1,65 @@
 // Loops through each breakpoint and creates a marging and padding
 // spacing for each spacing vaalue provided in the spacers listg
 
+// @each $prop, $abbrev in (margin: m, padding: p) {
+//   @each $size, $length in $spacers {
+//     .#{$abbrev}-#{$size} {
+//       #{$prop}: $length !important;
+//     }
+//     .#{$abbrev}t-#{$size} {
+//       #{$prop}-top: $length !important;
+//     }
+//     .#{$abbrev}r-#{$size} {
+//       #{$prop}-right: $length !important;
+//     }
+//     .#{$abbrev}l-#{$size} {
+//       #{$prop}-left: $length !important;
+//     }
+//     .#{$abbrev}y-#{$size} {
+//       #{$prop}-top: $length !important;
+//       #{$prop}-bottom: $length !important;
+//     }
+//     .#{$abbrev}x-#{$size} {
+//       #{$prop}-right: $length !important;
+//       #{$prop}-left: $length !important;
+//     }
+//   }
+// }
+
 // regualr default spacings without media query
 @each $infix, $breakpoint in $grid-breakpoints-up {
   @media screen and (min-width: $breakpoint) {
     // Regular spacings
     @each $prop, $abbrev in (margin: m, padding: p) {
       @each $size, $length in $spacers {
-        .#{$abbrev}-#{$infix}-#{$size},
-        .#{$abbrev}-#{$size} {
+        .#{$abbrev}-#{$size},
+        .#{$abbrev}-#{$infix}-#{$size} {
           #{$prop}: $length !important;
         }
-        .#{$abbrev}t-#{$infix}-#{$size},
-        .#{$abbrev}t-#{$size} {
+        .#{$abbrev}t-#{$size},
+        .#{$abbrev}t-#{$infix}-#{$size} {
           #{$prop}-top: $length !important;
         }
-        .#{$abbrev}r-#{$infix}-#{$size},
-        .#{$abbrev}r-#{$size} {
+        .#{$abbrev}r-#{$size},
+        .#{$abbrev}r-#{$infix}-#{$size} {
           #{$prop}-right: $length !important;
         }
-        .#{$abbrev}b-#{$infix}-#{$size},
-        .#{$abbrev}b-#{$size} {
+        .#{$abbrev}b-#{$size},
+        .#{$abbrev}b-#{$infix}-#{$size} {
           #{$prop}-bottom: $length !important;
         }
-        .#{$abbrev}l-#{$infix}-#{$size},
-        .#{$abbrev}l-#{$size} {
+        .#{$abbrev}l-#{$size},
+        .#{$abbrev}l-#{$infix}-#{$size} {
           #{$prop}-left: $length !important;
         }
-        .#{$abbrev}y-#{$infix}-#{$size},
-        .#{$abbrev}y-#{$size} {
+
+        .#{$abbrev}y-#{$size},
+        .#{$abbrev}y-#{$infix}-#{$size} {
           #{$prop}-top: $length !important;
           #{$prop}-bottom: $length !important;
         }
-        .#{$abbrev}x-#{$infix}-#{$size},
-        .#{$abbrev}x-#{$size} {
+        .#{$abbrev}x-#{$size},
+        .#{$abbrev}x-#{$infix}-#{$size} {
           #{$prop}-right: $length !important;
           #{$prop}-left: $length !important;
         }

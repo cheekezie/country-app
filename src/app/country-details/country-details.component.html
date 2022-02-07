@@ -1,4 +1,6 @@
-<div class="container pt-50">
+<app-navbar></app-navbar>
+
+<div class="container mt-70">
   <button
     class="radius-sm bg-white shadow-sm flex-x-center py-10 px-40 cursor-pointer"
     [routerLink]="['/']"
@@ -6,17 +8,84 @@
     <span class="material-icons s15-h17 mr-10"> west </span>
     Back
   </button>
-  <div class="row align-items-center mt-50">
+  <div class="row align-items-center mt-50" *ngIf="!loading || country">
     <div class="size-md-6">
       <div class="column-wrapper">
-        <img class="w-100" src="https://flagcdn.com/w320/ba.png" alt="" />
+        <img
+          class="w-100"
+          [src]="country?.flags?.svg"
+          [alt]="country?.name?.official"
+        />
       </div>
     </div>
 
     <div class="size-md-6">
       <div class="column-wrapper">
-        <h6 class="mb-10 s22-h27 text-weight-bolder">Germany</h6>
+        <div class="pl-md-50">
+          <h6 class="mb-10 s22-h27 text-weight-bolder mb-30">
+            {{ country?.name?.official }}
+          </h6>
+          <div class="flex mb-60">
+            <div class="flex-1 details pr-10">
+              <p class="mb-8">
+                Population: <span>{{ country?.population | withcoma }}</span>
+              </p>
+              <p class="mb-8">
+                Region: <span>{{ country?.region }}</span>
+              </p>
+              <p class="mb-8">
+                Capital: <span>{{ country?.capital?.slice(0) }}</span>
+              </p>
+              <p class="mb-8">
+                Dialing Code: <span>{{ country?.dialoCode }}</span>
+              </p>
+              <p>
+                Area: <span>{{ country?.area | withcoma }}</span>
+              </p>
+            </div>
+            <div class="flex-1 details">
+              <p class="mb-8">
+                Top Level Domains: <span>{{ country?.demonyms?.eng?.f }}</span>
+              </p>
+              <p class="mb-8">
+                Currency:
+                <span
+                  *ngFor="
+                    let curr of country?.currencies | keyvalue;
+                    let first = first
+                  "
+                  [ngClass]="{ 'ml-3': !first }"
+                  >{{ curr?.value?.name }}</span
+                >
+              </p>
+              <p>
+                Language:
+                <span
+                  *ngFor="
+                    let lang of country?.languages | keyvalue;
+                    let first = first
+                  "
+                  [ngClass]="{ 'ml-3': !first }"
+                  >{{ lang?.value }}</span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-wrap">
+            <span
+              class="py-5 px-10 shadow-sm radius-sm mb-10 mr-8 s15-h17 text-dark bg-white"
+              *ngFor="let border of country?.borders"
+            >
+              {{ border | uppercase }}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <app-shimmer
+    *ngIf="loading && !country"
+    [loaderType]="loaderType"
+  ></app-shimmer>
 </div>

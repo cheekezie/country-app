@@ -9,7 +9,9 @@ export interface Country {
   region: string;
   subregion: string;
   languages: Object;
+  currencies: Object;
   latlng: number[];
+  dialoCode?: string;
   landlocked: boolean;
   borders: string[];
   area: number;

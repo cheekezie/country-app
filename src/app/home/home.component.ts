@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { debounceTime } from 'rxjs';
 import { Country } from '../core/models/country';
+import { Loader } from '../core/models/loader';
 import { ApiService } from '../core/services/api/api.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { ApiService } from '../core/services/api/api.service';
 })
 export class HomeComponent implements OnInit {
   countries: Country[] = [];
+  loaderType: Loader = { type: 'list' };
   shodwDropdown = false;
   loading = false;
   selectedRegion: string;
@@ -43,14 +45,9 @@ export class HomeComponent implements OnInit {
   getCountries() {
     this.loading = true;
     this.countryS.getCountries().subscribe((res) => {
-      this.countries = _.orderBy(res.slice(0, 20), ['name.official'], ['asc']);
+      this.countries = _.orderBy(res.slice(0, 40), ['name.official'], ['asc']);
       this.loading = false;
     });
-  }
-
-  // Used to loop through the shimmer for a number of times
-  numSequence(n: number): Array<number> {
-    return Array(n);
   }
 
   searchByRegion(region: string) {

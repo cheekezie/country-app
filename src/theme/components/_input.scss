@@ -35,6 +35,7 @@ input {
   }
   ul {
     position: absolute;
+    z-index: 1;
     top: rem(55);
     padding: rem(18) rem(5) rem(18) rem(15);
     right: 0;
