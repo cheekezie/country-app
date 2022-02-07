@@ -47,17 +47,24 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   }
   ngOnInit() {
     AOS.init();
-    this.themeSub = this.util.theme.subscribe((theme) => {
-      this.darkTheme = theme;
-    });
+    // To use if navbar is used npt globally used on the app component
+    // this.themeSub = this.util.theme.subscribe((theme) => {
+    //   this.darkTheme = theme;
+    // });
   }
 
   ngOnDestroy(): void {
     this.themeSub?.unsubscribe();
   }
+
   ngAfterViewInit() {
     const loader = this.renderer.selectRootElement('#appLoader');
     this.renderer.setStyle(loader, 'display', 'none');
+  }
+
+  // To set theme value passed from navbar component
+  setTheme(theme: boolean) {
+    this.darkTheme = theme;
   }
 
   prepareRoute(outlet: RouterOutlet) {
