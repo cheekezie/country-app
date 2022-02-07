@@ -2,6 +2,13 @@
   margin: 0;
   padding: 0;
 }
+.shadow-md {
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 18px -5px rgba(0, 0, 0, 0.25);
+}
 .hidden {
   display: none;
 }
@@ -95,13 +102,6 @@
   flex: 1;
 }
 
-.shadow-md {
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25);
-}
-
-.shadow-sm {
-  box-shadow: 0 2px 18px -5px rgba(0, 0, 0, 0.25);
-}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -127,6 +127,12 @@
   flex-wrap: wrap;
 }
 
+// NGX Pagination Customization
+.ngx-pagination .current {
+  border-radius: 10px;
+  @extend .shadow-md;
+}
+
 .darkTheme {
   @extend .dark-theme;
   input,
@@ -137,7 +143,8 @@
   .shimmer .shine,
   button,
   .bg-white,
-  .country-card {
+  .country-card,
+  .ngx-pagination .current {
     @extend .dark-theme-alt;
   }
   .dropdown .selected {
@@ -165,7 +172,8 @@
 
   .text-grey,
   .text-black,
-  .text-dark {
+  .text-dark,
+  .ngx-pagination a {
     @extend .text-white;
   }
   .details {
