@@ -3,6 +3,6 @@
   class="min-h-100"
   [ngClass]="{ darkTheme: darkTheme }"
 >
-  <app-navbar (themeEv)="setTheme($event)"></app-navbar>
+  <app-navbar (themeEv)="darkTheme = $event"></app-navbar>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>

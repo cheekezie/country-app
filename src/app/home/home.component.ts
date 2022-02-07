@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   loaderType: Loader = { type: 'list' };
   shodwDropdown = false;
   loading = false;
+  currentPage = 1;
   selectedRegion: string;
   searchControl: FormControl = new FormControl('');
   regions: string[] = [
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
   getCountries() {
     this.loading = true;
     this.countryS.getCountries().subscribe((res) => {
-      this.countries = _.orderBy(res.slice(0, 40), ['name.official'], ['asc']);
+      this.countries = _.orderBy(res, ['name.official'], ['asc']);
       this.loading = false;
     });
   }

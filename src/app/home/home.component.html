@@ -48,7 +48,11 @@
   <div class="row">
     <div
       class="size-md-3 cursor-pointer"
-      *ngFor="let country of countries; let i = index"
+      *ngFor="
+        let country of countries
+          | paginate: { itemsPerPage: 32, currentPage: this.currentPage };
+        let i = index
+      "
       (click)="openDetail(country.name.official)"
     >
       <div class="column-wrapper">
@@ -75,6 +79,15 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div
+    class="flex justify-content-center mb-30"
+    *ngIf="!loading && countries.length > 0"
+  >
+    <pagination-controls
+      (pageChange)="currentPage = $event"
+    ></pagination-controls>
   </div>
 
   <app-shimmer

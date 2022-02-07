@@ -62,11 +62,6 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     this.renderer.setStyle(loader, 'display', 'none');
   }
 
-  // To set theme value passed from navbar component
-  setTheme(theme: boolean) {
-    this.darkTheme = theme;
-  }
-
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet &&
