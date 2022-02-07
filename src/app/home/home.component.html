@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container pt-50">
-  <div class="mb-40">
+  <!-- <div class="mb-40">
     <h6 class="text-weight-700 s17-h23">Visited Countries</h6>
     <div class="overflow-auto hide-scrollbar flex-x-center py-10">
       <div
@@ -14,7 +14,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="flex-x-between mb-30 flex-wrap">
     <div class="mb-10 mb-md-0 w-100-sm">
       <input
@@ -50,14 +50,13 @@
   <div class="row">
     <div
       class="size-md-3 cursor-pointer"
-      *ngFor="let country of countries"
+      *ngFor="let country of countries; let i = index"
       (click)="openDetail(country.name.official)"
     >
       <div class="column-wrapper">
         <div
           class="country-card"
           data-aos="fade-up"
-          data-aos-offset="300"
           data-aos-easing="ease-in-sine"
         >
           <div class="flag">

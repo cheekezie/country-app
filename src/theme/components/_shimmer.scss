@@ -2,6 +2,9 @@
   .head {
     height: 10rem;
     border-radius: 6px;
+    &-lg {
+      min-height: 25rem;
+    }
   }
   .shine {
     background: var(--light-grey);
@@ -27,25 +30,23 @@
     animation-timing-function: linear;
     -webkit-animation-timing-function: linear;
   }
-  .line {
+  [class*='line'] {
     height: 10px;
     margin-top: 10px;
-    border-radius: 4px;
+    border-radius: 3px;
+  }
+  .line {
     &-lg {
       height: 30px;
-      border-radius: 4px;
+    }
+    &-md-alt {
+      height: 15px;
     }
     &-md {
       height: 18px;
-      border-radius: 3px;
     }
     &.first {
       width: 70%;
-    }
-  }
-  &.detail-page {
-    .head {
-      min-height: 15rem;
     }
   }
   @keyframes placeholderShimmer {
