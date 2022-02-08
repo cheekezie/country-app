@@ -1,4 +1,4 @@
-<div class="container mt-70">
+<div class="container pt-70">
   <button
     class="radius-sm bg-white shadow-sm flex-x-center py-10 px-40 cursor-pointer"
     [routerLink]="['/']"
@@ -10,6 +10,8 @@
     <div class="size-md-6">
       <div class="column-wrapper">
         <img
+          data-aos="fade-up"
+          data-aos-easing="ease-in-sine"
           class="w-100 shadow-sm radius-sm"
           [src]="country?.flags?.svg"
           [alt]="country?.name?.official"
@@ -19,11 +21,15 @@
 
     <div class="size-md-6">
       <div class="column-wrapper">
-        <div class="pl-md-50">
+        <div
+          class="pl-md-50"
+          data-aos="fade-down"
+          data-aos-easing="ease-in-sine"
+        >
           <h6 class="mb-10 s22-h27 text-weight-bolder mb-30">
             {{ country?.name?.official }}
           </h6>
-          <div class="flex mb-60">
+          <div class="flex mb-50">
             <div class="flex-1 details pr-10">
               <p class="mb-8">
                 Population: <span>{{ country?.population | withcoma }}</span>
@@ -50,10 +56,11 @@
                 <span
                   *ngFor="
                     let curr of country?.currencies | keyvalue;
-                    let first = first
+                    let first = first;
+                    let last = last
                   "
                   [ngClass]="{ 'ml-3': !first }"
-                  >{{ curr?.value?.name }}</span
+                  >{{ curr?.value?.name }}{{ !last ? ',' : '' }}</span
                 >
               </p>
               <p>
@@ -61,18 +68,22 @@
                 <span
                   *ngFor="
                     let lang of country?.languages | keyvalue;
-                    let first = first
+                    let first = first;
+                    let last = last
                   "
                   [ngClass]="{ 'ml-3': !first }"
-                  >{{ lang?.value }}</span
+                  >{{ lang?.value }}{{ !last ? ',' : '' }}</span
                 >
               </p>
             </div>
           </div>
+
+          <h6 class="mb-8 s17-h23 text-weight-bolder">Border countries</h6>
           <div class="flex flex-wrap">
             <span
-              class="py-5 px-10 shadow-sm radius-sm mb-10 mr-8 s15-h17 text-dark bg-white"
+              class="py-5 px-10 shadow-sm radius-sm mb-10 mr-8 s15-h17 text-dark bg-white cursor-pointer"
               *ngFor="let border of country?.borders"
+              (click)="searchBorderCountry(border)"
             >
               {{ border | uppercase }}
             </span>

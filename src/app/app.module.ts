@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { CustomPipeModule } from './custom-pipe/custom-pipe.module';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
+import {
+  addCountryReducer,
+  countryDetailsReducer,
+} from './store/reducers/country.reducer';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -20,7 +24,10 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     SharedModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({
+      countryList: addCountryReducer,
+      countryDetails: countryDetailsReducer,
+    }),
     NgxPaginationModule,
     CustomPipeModule,
   ],

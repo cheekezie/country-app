@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
-import { debounceTime } from 'rxjs';
+import { debounceTime, Observable } from 'rxjs';
 import { Country } from '../core/models/country';
 import { Loader } from '../core/models/loader';
+import { AppState } from '../core/models/state';
 import { ApiService } from '../core/services/api/api.service';
+import { UtilService } from '../core/services/util/util.service';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +17,13 @@ import { ApiService } from '../core/services/api/api.service';
 })
 export class HomeComponent implements OnInit {
   countries: Country[] = [];
+  visitedCountries: Country[] = [];
   loaderType: Loader = { type: 'list' };
   shodwDropdown = false;
   loading = false;
   currentPage = 1;
   selectedRegion: string;
+  countryItems$: Observable<Country[]>;
   searchControl: FormControl = new FormControl('');
   regions: string[] = [
     'All',
@@ -28,13 +33,28 @@ export class HomeComponent implements OnInit {
     'Europe',
     'Oceania',
   ];
-  constructor(private countryS: ApiService, private router: Router) {
+  constructor(
+    private countryS: ApiService,
+    private router: Router,
+    private util: UtilService,
+    private store: Store<AppState>,
+  ) {
     //
   }
 
   ngOnInit(): void {
     this.listenToKeySearch();
-    this.getCountries();
+    this.store
+      .select((store) => store.countryList)
+      .subscribe((countries) => {
+        const visited = countries.filter((country) => {
+          return country.visited === true;
+        });
+        this.visitedCountries = visited;
+        countries.length > 0
+          ? (this.countries = countries)
+          : this.getCountries();
+      });
   }
 
   listenToKeySearch() {
@@ -46,7 +66,11 @@ export class HomeComponent implements OnInit {
   getCountries() {
     this.loading = true;
     this.countryS.getCountries().subscribe((res) => {
-      this.countries = _.orderBy(res, ['name.official'], ['asc']);
+      res.map((country) => {
+        country.id = this.util.create_UUID();
+      });
+      const countries = _.orderBy(res, ['name.official'], ['asc']);
+      this.util.dispatchTostore(countries, 'ADD_COUNTRY');
       this.loading = false;
     });
   }
@@ -55,7 +79,10 @@ export class HomeComponent implements OnInit {
     this.selectedRegion = region;
     this.shodwDropdown = false;
   }
-  openDetail(name: string) {
+  openDetail(country: Country) {
+    this.util.dispatchTostore([country], 'SET_COUNTRY_DETAILS');
+    this.util.dispatchTostore(country.id || '', 'ADD_VISITED_COUNTRY');
+    const name = country.name.official;
     const slug = name.trim().toLowerCase().replace(/\s+/g, '-'); // remove white space from country name and replace with '-';
     this.router.navigate(['/', slug]);
   }

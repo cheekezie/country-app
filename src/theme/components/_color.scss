@@ -17,12 +17,17 @@
 .text-black {
   color: var(--black);
 }
+.animate-bg {
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
 .dark-theme {
   background: var(--dark-theme);
+  @extend .animate-bg;
   @extend .text-white;
 }
-
 .dark-theme-alt {
+  @extend .animate-bg;
   background: var(--dark-theme-alt) !important;
   * {
     color: var(--white) !important;

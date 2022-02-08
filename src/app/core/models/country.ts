@@ -1,16 +1,22 @@
 export interface Country {
   name: Name;
+  id?: string;
+  visited: boolean;
   idd: {
     root: string;
     suffixes: string[];
   };
   capital: string[];
-  altSpellings: ['BA', 'Bosnia-Herzegovina', 'Босна и Херцеговина'];
+  altSpellings: string[];
   region: string;
   subregion: string;
   languages: Object;
   currencies: Object;
   latlng: number[];
+  cca2: string;
+  cca3: string;
+  ccn3: string;
+  cioc: string;
   dialoCode?: string;
   landlocked: boolean;
   borders: string[];
