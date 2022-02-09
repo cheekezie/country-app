@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:ci": "npm run lint",
-    "build:ci": "npm run clean && npm run build:prod"
+    "build:ci": "npm run clean && npm run build --prod"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
