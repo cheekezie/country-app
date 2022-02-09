@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
+import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ClickOutsideModule,
     SharedModule,
     StoreModule.forRoot({
       countryList: addCountryReducer,

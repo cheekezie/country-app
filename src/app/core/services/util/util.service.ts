@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Country } from '../../models/country';
 import { AppState } from '../../models/state';
 
@@ -9,7 +8,6 @@ import { AppState } from '../../models/state';
   providedIn: 'root',
 })
 export class UtilService {
-  baseUrl = environment.url;
   constructor(private store: Store<AppState>) {
     //
   }

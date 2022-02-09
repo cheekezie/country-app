@@ -18,6 +18,7 @@
       <input
         type="text"
         class="search"
+        [readonly]="countries.length === 0 || loading"
         [formControl]="searchControl"
         placeholder="Search for a country"
       />
@@ -26,6 +27,7 @@
       <div
         class="shadow-sm radius-sm flex-x-between selected cursor-pointer"
         (click)="shodwDropdown = !shodwDropdown"
+        (clickOutside)="shodwDropdown = false"
       >
         <span class="pr-4">{{
           !selectedRegion || selectedRegion === 'All'

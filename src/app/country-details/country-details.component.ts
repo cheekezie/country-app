@@ -34,6 +34,7 @@ export class CountryDetailsComponent implements OnInit {
           this.storedData = true;
           this.country = countries[0];
         } else {
+          this.storedData = false;
           this.getCountry(name);
         }
       });
@@ -42,10 +43,7 @@ export class CountryDetailsComponent implements OnInit {
   getCountry(name: string) {
     this.loading = true;
     this.countryS.getCountryByFullname(name).subscribe((res) => {
-      res[0].dialoCode =
-        res[0].idd.root + res[0].idd && res[0].idd.suffixes
-          ? res[0].idd.suffixes[0]
-          : '';
+      res[0] = this.formatCountry(res[0]);
       this.country = res[0];
       this.loading = false;
     });
@@ -56,15 +54,17 @@ export class CountryDetailsComponent implements OnInit {
   searchBorderCountry(cioc: string) {
     this.loading = true;
     this.countryS.getCountryByCode(cioc).subscribe((res) => {
-      res[0].dialoCode =
-        res[0].idd.root + res[0].idd && res[0].idd.suffixes
-          ? res[0].idd.suffixes[0]
-          : '';
+      res[0] = this.formatCountry(res[0]);
       this.country = res[0];
-      if (this.storedData) {
-        this.util.dispatchTostore(this.country.id || '', 'ADD_VISITED_COUNTRY');
-      }
       this.loading = false;
     });
+  }
+
+  formatCountry(country: Country): Country {
+    country.idd.root + country.idd && country.idd.suffixes
+      ? country.idd.suffixes[0]
+      : '';
+    country.id = this.util.create_UUID();
+    return country;
   }
 }

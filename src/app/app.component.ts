@@ -25,7 +25,7 @@ import * as AOS from 'aos';
 })
 export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   public isShowingRouteLoadIndicator: boolean;
-  public themeSub: Subscription;
+  public themeSub?: Subscription;
   darkTheme = false;
   title = '';
   constructor(
@@ -57,6 +57,14 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
     this.themeSub?.unsubscribe();
   }
 
+  // To schroll right to top of the page on every page route
+  onActivate() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
   ngAfterViewInit() {
     const loader = this.renderer.selectRootElement('#appLoader');
     this.renderer.setStyle(loader, 'display', 'none');
