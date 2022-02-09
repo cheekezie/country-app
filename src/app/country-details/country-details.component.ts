@@ -26,7 +26,7 @@ export class CountryDetailsComponent implements OnInit {
 
   ngOnInit() {
     const countrySlug = this.activateDroute.snapshot.paramMap.get('slug');
-    const name = countrySlug ? countrySlug.trim().replace(/-/g, ' ') : ''; // to reformat the slug
+    const name = countrySlug ? countrySlug.trim().replace(/-/g, ' ') : ''; // Reformat the slug from url
     this.store
       .select((store) => store.countryDetails)
       .subscribe((countries) => {
