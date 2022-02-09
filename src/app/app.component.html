@@ -1,4 +1,8 @@
-<div class="min-h-100" [ngClass]="{ darkTheme: darkTheme }">
+<div
+  class="min-h-100"
+  [ngClass]="{ darkTheme: darkTheme }"
+  [@routeAnimations]="prepareRoute(outlet)"
+>
   <app-navbar (themeEv)="darkTheme = $event"></app-navbar>
   <router-outlet #outlet="outlet" (activate)="onActivate()"></router-outlet>
 </div>
