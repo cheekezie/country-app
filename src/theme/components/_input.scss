@@ -17,6 +17,7 @@ input {
     background-position-x: rem(23);
     background-position-y: 50%;
     @include responsive(width, 100%, sm);
+    @include responsive(font-size, 16px, sm);
   }
 }
 
