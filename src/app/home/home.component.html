@@ -49,7 +49,7 @@
   </div>
   <div class="row">
     <div
-      class="size-md-3 cursor-pointer"
+      class="size-md-3 size-sm-6 cursor-pointer"
       *ngFor="
         let country of countries
           | paginate: { itemsPerPage: 32, currentPage: this.currentPage };
@@ -93,7 +93,7 @@
   </div>
 
   <app-shimmer
-    *ngIf="loading && countries.length === 0"
     [loaderType]="loaderType"
+    *ngIf="loading && countries.length === 0"
   ></app-shimmer>
 </div>

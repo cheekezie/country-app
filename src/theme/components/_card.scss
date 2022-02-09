@@ -13,6 +13,7 @@
     img {
       width: 100%;
       height: 10rem;
+      @include responsive(height, 20rem, md);
       @include responsive(height, auto, sm);
       object-fit: cover;
       border-radius: 6px 6px 0 0;

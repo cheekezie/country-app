@@ -10,6 +10,7 @@
     padding: 0 20px;
   }
 }
+
 @each $infix, $breakpoint in $grid-breakpoints-up {
   @media screen and (min-width: $breakpoint) {
     @each $size, $percentage in $layouts {
@@ -19,6 +20,15 @@
       .size-#{$infix}-#{$size} {
         width: $percentage !important;
       }
+    }
+  }
+}
+
+@each $infix, $breakpoint in $grid-breakpoints-up {
+  @each $size, $percentage in $layouts {
+    .size-#{$size},
+    .size-#{$infix}-#{$size} {
+      width: 100%;
     }
   }
 }

@@ -5,6 +5,7 @@
     &-lg {
       min-height: 25rem;
     }
+    @include responsive(height, 20rem, md);
   }
   .shine {
     background: var(--light-grey);
