@@ -20,7 +20,11 @@ input {
     @include responsive(font-size, 16px, sm);
   }
 }
-
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
 .dropdown {
   position: relative;
   min-width: rem(220);
@@ -46,4 +50,169 @@ input {
       margin-bottom: 10px;
     }
   }
+}
+
+label {
+  font-size: 14px;
+}
+textarea {
+  padding: 0.385rem 1.2rem !important;
+  font-size: font(f_14) !important;
+}
+ngx-dropzone {
+  min-height: 120px;
+  height: 100% !important;
+  border: 1px dashed #828282;
+  text-align: center;
+  img {
+    width: 5rem;
+  }
+}
+.timepicker-overlay {
+  z-index: 1001 !important;
+}
+.timepicker__header,
+.clock-face__number > span.active,
+.clock-face__clock-hand {
+  background: color(primary) !important;
+}
+.timepicker-button {
+  color: color(primary) !important;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input,
+select,
+mat-select {
+  min-height: calc(2em + 0.75rem + 1px) !important;
+  padding: 0.385rem 1.2rem !important;
+  color: var(--grey);
+  border-radius: 4px;
+  background: none;
+  border: 0.1rem solid rgba(23, 65, 104, 0.2);
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--off-white);
+  }
+  &:focus,
+  &:active {
+    outline: none;
+    outline-width: 0;
+  }
+  &.input_sm {
+    padding: 0.2rem 0.5rem;
+  }
+  &::placeholder {
+    color: var(--light-grey2);
+  }
+  &.border_bottom {
+    border-bottom: 2px solid #c4c4c4;
+  }
+  &.border_none {
+    border: none;
+  }
+  &.search {
+    border: 1px solid rgba(196, 196, 196, 0.5);
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: calc(1.2em + 0.75rem + 1px) !important;
+    padding: 0.1rem 0.7rem !important;
+    color: rgba(196, 196, 196, 0.5);
+  }
+  &.filter_search {
+    width: 15rem;
+    padding: 0.1rem 1.2rem 0.1rem 0.7rem !important;
+  }
+}
+
+select {
+  min-height: calc(3.2em + 0.75rem + 1px) !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: transparent;
+  height: 0;
+  bottom: 0;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+.mat-select .mat-select-value {
+  padding-top: 3px;
+}
+//DISABLE AUTO ZOOM IN
+@media screen and (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+//VALIDATION ERROR STYLING
+input.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid {
+  border-bottom: 1px solid lightcoral !important;
+}
+
+ng-multiselect-dropdown {
+  .dropdown-list {
+    overflow-y: scroll;
+    li {
+      text-transform: capitalize;
+    }
+  }
+  .dropdown-btn {
+    min-height: calc(2em + 0.8rem + 1px) !important;
+    border-radius: 5px;
+    border: 1px solid color(_grey);
+    padding: 0.5rem 1.2rem !important;
+    .selected-item {
+      margin-bottom: 2px;
+      text-transform: capitalize;
+    }
+  }
+  .dropdown-multiselect__caret {
+    top: 5px !important;
+    line-height: initial !important;
+  }
+}
+
+ng-multiselect-dropdown.ng-touched.ng-invalid {
+  .dropdown-btn {
+    border: 2px solid color(light_danger) !important;
+  }
+}
+
+ng-multiselect-dropdown.ng-valid {
+  .dropdown-btn {
+    border: 2px solid color(green_4) !important;
+  }
+}
+
+// Remove default arrows in type number
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }

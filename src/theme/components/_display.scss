@@ -6,6 +6,14 @@
   box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25);
 }
 
+// Grid styles
+.grid-col-50 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 767.98px) {
+    grid-template-columns: 1fr;
+  }
+}
 .shadow-sm {
   box-shadow: 0 2px 18px -5px rgba(0, 0, 0, 0.25);
 }
@@ -23,6 +31,9 @@
 }
 .block {
   display: block;
+}
+.full-height {
+  min-height: 100vh;
 }
 .align-items-center {
   align-items: center;
@@ -182,5 +193,13 @@
         color: var(--off-white) !important;
       }
     }
+  }
+}
+.bg-vector {
+  background-image: url(../../assets/img/bg-element-full.svg);
+  background-color: var(--primary);
+  background-repeat: no-repeat;
+  &.bg-bottom {
+    background-position: bottom;
   }
 }

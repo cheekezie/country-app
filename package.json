@@ -1,5 +1,5 @@
 {
-  "name": "broadly-country-app",
+  "name": "country-listing-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

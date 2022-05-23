@@ -1,0 +1,65 @@
+.logo {
+  position: absolute;
+  left: 50px;
+  top: 2rem;
+  @media screen and (max-width: 991px) {
+    left: 20px;
+  }
+}
+
+// Grid styles
+.grid-col-50 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 767.98px) {
+    grid-template-columns: 1fr;
+  }
+}
+.info-area {
+  .text {
+    position: relative;
+    padding-left: 2rem;
+    &::before {
+      @extend .pseudo;
+      top: -2rem;
+      bottom: -2rem;
+      width: 2px;
+      left: 0;
+    }
+  }
+  h2 {
+    position: relative;
+    font-size: 70px;
+    font-size: clamp(1rem, -0.875rem + 8.333vw, 3.5rem);
+    &::before {
+      @extend .pseudo;
+      top: 1rem;
+      left: -2rem;
+      width: 1.8rem;
+      height: 2px;
+    }
+  }
+  p,
+  .icon-area {
+    position: relative;
+    padding-left: 3.5rem;
+    &::before {
+      @extend .pseudo;
+      left: -2rem;
+      top: 10px;
+      width: 5rem;
+      height: 2px;
+    }
+  }
+  .icon-area {
+    &::before {
+      top: 1.5rem;
+    }
+  }
+}
+
+.pseudo {
+  position: absolute;
+  content: '';
+  background: #fff;
+}

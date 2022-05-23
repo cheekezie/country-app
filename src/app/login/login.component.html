@@ -1,0 +1,64 @@
+<div class="wrapper grid-col-50 full-height">
+  <div class="container flex-y-center align-items-center position-relative">
+    <div class="cursor-pointer flex-x-center logo">
+      <img
+        src="../../assets/img/broadly-logo.svg"
+        class="mr-3 logo-sm"
+        alt=""
+      />
+      Product name
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h6 class="text-weight-600 s30-h42 mb-10 text-blaxk">
+        Welcome to our app
+      </h6>
+      <p class="text-weight-400 s17-h23 mb-40 text-grey">
+        Login to your personalized dashboard
+      </p>
+      <div class="form-group">
+        <label for="fullame">Username/email</label>
+        <input
+          id="fullame"
+          placeholder="Username or email address"
+          class="text-uppercase"
+        />
+      </div>
+      <div class="form-group">
+        <label for="fullame">Password</label>
+        <input id="fullame" placeholder="Your password" />
+      </div>
+      <button
+        class="btn bg-primary w-100 s15-h17 text-white btn-md"
+        type="submit"
+      >
+        Login to dashboard
+      </button>
+    </form>
+  </div>
+  <div
+    class="info-area hidden-sm bg-vector bg-bottom flex-y-center align-items-center text-white"
+  >
+    <div class="container">
+      <div class="text">
+        <div class="mb-20">
+          <span class="material-icons bg-secondary text-white user-icon s50">
+            format_quote
+          </span>
+        </div>
+
+        <h2 class="text-weight-600 mb-30">Lorem ipsum dolor .</h2>
+        <p class="mb-30 s17-h23">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ad
+          aliquid accusantium porro dolorum magni, hic nesciunt rem earum
+          eveniet animi.
+        </p>
+        <div class="flex-x-center icon-area">
+          <span class="material-icons user-icon text-secondary s50">
+            account_circle
+          </span>
+          <span class="ml-10">Esteemed user</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

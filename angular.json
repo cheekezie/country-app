@@ -74,7 +74,8 @@
               "browserTarget": "broadly-country-app:build:production"
             },
             "development": {
-              "browserTarget": "broadly-country-app:build:development"
+              "browserTarget": "broadly-country-app:build:development",
+              "port": 19200
             }
           },
           "defaultConfiguration": "development"

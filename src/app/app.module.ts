@@ -15,8 +15,9 @@ import {
   addCountryReducer,
   countryDetailsReducer,
 } from './store/reducers/country.reducer';
+import { LoginComponent } from './login/login.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

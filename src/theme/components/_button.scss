@@ -1,8 +1,67 @@
-button {
+button,
+.btn {
   box-shadow: none;
   background: none;
   border: none;
-  .button-sm {
+  outline: none;
+  outline-width: 0;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &.btn-sm {
     padding: rem(10) rem(22);
+  }
+  &.btn-table {
+    padding: rem(5) rem(11);
+  }
+  &.btn-md {
+    padding: rem(15) rem(25);
+  }
+  &.btn-lg {
+    padding: rem(15) rem(50);
+  }
+  &.btn-outlined-white {
+    border: 1px solid var(--white);
+    &:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+  }
+  &.btn-outlined-primary {
+    border: 1px solid var(--primary);
+    &:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+  }
+  &.btn-outlined-black {
+    border: 1px solid var(--black);
+    &:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+  }
+  &.btn-outlined-dark {
+    border: 1px solid var(--dark);
+    &:hover {
+      background: var(--dark);
+      color: var(--white);
+    }
+  }
+  &.no-hover {
+    &:hover {
+      background: initial;
+      color: initial;
+    }
+  }
+  &:disabled {
+    opacity: 0.5;
+    @extend .no-hover;
+  }
+  &:hover {
+    transform: translateY(-2px);
+    &:disabled {
+      transform: translateY(0);
+    }
   }
 }
